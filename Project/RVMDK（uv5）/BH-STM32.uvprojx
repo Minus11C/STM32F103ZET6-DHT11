@@ -608,6 +608,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\User\dht11\dht11.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_dht11_2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\dht11\bsp_dht11_2.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

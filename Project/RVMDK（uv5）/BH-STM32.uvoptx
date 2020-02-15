@@ -171,18 +171,82 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>42</LineNumber>
+          <LineNumber>43</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220536</Address>
+          <Address>134220884</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>G:\鏂板缓鏂囦欢澶?閲庣伀\A鐩橈紙璧勬枡鐩橈級\3-绋嬪簭婧愮爜\2.鎵╁睍妯″潡渚嬬▼\DHT11娓╂箍搴︿紶鎰熷櫒瀹為獙\Project\User\main.c</Filename>
+          <Filename>C:\Users\1\Desktop\DHT11娓╂箍搴︿紶鎰熷櫒瀹為獙\Project\User\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\______\../../User/main.c\42</Expression>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>53</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134220926</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\1\Desktop\DHT11娓╂箍搴︿紶鎰熷櫒瀹為獙\Project\User\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\______\../../User/main.c\53</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>68</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134218822</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\1\Desktop\DHT11娓╂箍搴︿紶鎰熷櫒瀹為獙\Project\User\dht11\dht11.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\______\../../User/dht11/dht11.c\68</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>71</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134218828</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\1\Desktop\DHT11娓╂箍搴︿紶鎰熷櫒瀹為獙\Project\User\dht11\dht11.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\______\../../User/dht11/dht11.c\71</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>102</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134218926</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\1\Desktop\DHT11娓╂箍搴︿紶鎰熷櫒瀹為獙\Project\User\dht11\dht11.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\______\../../User/dht11/dht11.c\102</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
@@ -708,7 +772,7 @@
       <GroupNumber>4</GroupNumber>
       <FileNumber>36</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
@@ -730,6 +794,19 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>4</GroupNumber>
+      <FileNumber>38</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\User\dht11\bsp_dht11_2.c</PathWithFileName>
+      <FilenameWithoutPath>bsp_dht11_2.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
@@ -740,7 +817,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>38</FileNumber>
+      <FileNumber>39</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>

@@ -20,6 +20,7 @@
 #include "./dht11/dht11.h"
 #include "./usart/bsp_usart.h"
 
+#define  Number_of_nodes     2
 
 
 /**
@@ -29,7 +30,7 @@
   */
 int main(void)
 {
-	DHT11_Data_TypeDef DHT11_Data;
+	DHT11_Data_TypeDef DHT11_Data[Number_of_nodes];
 	
 	
 	/* 配置SysTick 为1us中断一次 */
@@ -39,15 +40,20 @@ int main(void)
 	printf("\r\n***多点测温系统***\r\n");
 
 	/*初始化DTT11的引脚*/
-	DHT11_Init (&DHT11_Data);
+	DHT11_Init (&DHT11_Data[0]);
 	
 	while(1)
 	{	
 			/*调用DHT11_Read_TempAndHumidity读取温湿度，若成功则输出该信息*/
-			if( DHT11_Read_TempAndHumidity ( & DHT11_Data ) == SUCCESS)
+			if( DHT11_Read_TempAndHumidity ( & DHT11_Data[0] ) == SUCCESS)
 			{
-				printf("\r\n读取DHT11成功!\r\n\r\n湿度为%d.%d ％RH ，温度为 %d.%d℃ \r\n",\
-				DHT11_Data.humi_int,DHT11_Data.humi_deci,DHT11_Data.temp_int,DHT11_Data.temp_deci);
+				printf("\r\n读取DHT11_1成功!\r\n\r\n湿度为%d.%d ％RH ，温度为 %d.%d℃ \r\n",\
+				DHT11_Data[0].humi_int,DHT11_Data[0].humi_deci,DHT11_Data[0].temp_int,DHT11_Data[0].temp_deci);
+			}
+			if( DHT11_Read_TempAndHumidity ( & DHT11_Data[1] ) == SUCCESS)
+			{
+				printf("\r\n读取DHT11_2成功!\r\n\r\n湿度为%d.%d ％RH ，温度为 %d.%d℃ \r\n",\
+				DHT11_Data[1].humi_int,DHT11_Data[1].humi_deci,DHT11_Data[1].temp_int,DHT11_Data[1].temp_deci);
 			}			
 			else
 			{

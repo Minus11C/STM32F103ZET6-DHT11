@@ -2,6 +2,9 @@
 #include "./dht11/dht11.h"
 #include "./systick/bsp_SysTick.h"
 #include "./dht11/bsp_dht11_1.h"
+#include "./dht11/bsp_dht11_2.h"
+
+#define  Number_of_nodes     2
 
 /* 
  * 从DHT11读取一个字节，MSB先行
@@ -107,16 +110,28 @@ uint8_t DHT11_Read_TempAndHumidity(DHT11_Data_TypeDef *DHT11_Data)
   */
 void DHT11_Init (DHT11_Data_TypeDef * DHT11_Data)
 {
-    DHT11_Data->_DHT11_GPIO_Config_ = DHT11_1_GPIO_Config;
-	DHT11_Data->_DHT11_GPIO_SetBits_ = DHT11_1_GPIO_SetBits;	
-    DHT11_Data->_DHT11_Mode_Out_PP_ = DHT11_1_Mode_Out_PP;
-    DHT11_Data->_DHT11_Mode_IPU_ = DHT11_1_Mode_IPU;
-    DHT11_Data->_DHT11_Dout_0_ = DHT11_1_Dout_0;
-    DHT11_Data->_DHT11_Dout_1_ = DHT11_1_Dout_1;
-    DHT11_Data->_DHT11_Dout_IN_ = DHT11_1_Dout_IN;
+    int i;
+    DHT11_Data[0]._DHT11_GPIO_Config_ = DHT11_1_GPIO_Config;
+	DHT11_Data[0]._DHT11_GPIO_SetBits_ = DHT11_1_GPIO_SetBits;	
+    DHT11_Data[0]._DHT11_Mode_Out_PP_ = DHT11_1_Mode_Out_PP;
+    DHT11_Data[0]._DHT11_Mode_IPU_ = DHT11_1_Mode_IPU;
+    DHT11_Data[0]._DHT11_Dout_0_ = DHT11_1_Dout_0;
+    DHT11_Data[0]._DHT11_Dout_1_ = DHT11_1_Dout_1;
+    DHT11_Data[0]._DHT11_Dout_IN_ = DHT11_1_Dout_IN;
     
-    DHT11_Data->_DHT11_GPIO_Config_();
-    DHT11_Data->_DHT11_GPIO_SetBits_();
+    DHT11_Data[1]._DHT11_GPIO_Config_ = DHT11_2_GPIO_Config;
+	DHT11_Data[1]._DHT11_GPIO_SetBits_ = DHT11_2_GPIO_SetBits;	
+    DHT11_Data[1]._DHT11_Mode_Out_PP_ = DHT11_2_Mode_Out_PP;
+    DHT11_Data[1]._DHT11_Mode_IPU_ = DHT11_2_Mode_IPU;
+    DHT11_Data[1]._DHT11_Dout_0_ = DHT11_2_Dout_0;
+    DHT11_Data[1]._DHT11_Dout_1_ = DHT11_2_Dout_1;
+    DHT11_Data[1]._DHT11_Dout_IN_ = DHT11_2_Dout_IN;
+   
+    for(i = 0; i < Number_of_nodes; i++)
+    {
+        DHT11_Data[i]._DHT11_GPIO_Config_();
+        DHT11_Data[i]._DHT11_GPIO_SetBits_();
+    }
 }
 	  
 

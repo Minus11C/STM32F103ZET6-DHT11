@@ -31,3 +31,4 @@
 ..\..\output\dht11.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\dht11.o: ..\..\User\./systick/bsp_SysTick.h
 ..\..\output\dht11.o: ..\..\User\./dht11/bsp_dht11_1.h
+..\..\output\dht11.o: ..\..\User\./dht11/bsp_dht11_2.h
