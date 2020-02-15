@@ -17,7 +17,7 @@
   
 #include "stm32f10x.h"
 #include "./systick/bsp_SysTick.h"
-#include "./dht11/bsp_dht11.h"
+#include "./dht11/dht11.h"
 #include "./usart/bsp_usart.h"
 
 

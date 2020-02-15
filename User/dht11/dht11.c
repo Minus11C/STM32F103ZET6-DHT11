@@ -1,93 +1,7 @@
 
-#include "./dht11/bsp_dht11.h"
+#include "./dht11/dht11.h"
 #include "./systick/bsp_SysTick.h"
-
-static void DHT11_GPIO_SetBits(void)
-{
-    GPIO_SetBits(DHT11_Dout_GPIO_PORT, DHT11_Dout_GPIO_PIN);
-}
-
-uint8_t DHT11_1_Dout_IN(void)
-{
-    return  GPIO_ReadInputDataBit ( DHT11_Dout_GPIO_PORT, DHT11_Dout_GPIO_PIN );
-}
-
-/*
- * 函数名：DHT11_GPIO_Config
- * 描述  ：配置DHT11用到的I/O口
- * 输入  ：无
- * 输出  ：无
- */
-static void DHT11_GPIO_Config ( void )
-{		
-	/*定义一个GPIO_InitTypeDef类型的结构体*/
-	GPIO_InitTypeDef GPIO_InitStructure; 
-
-	
-	/*开启DHT11_Dout_GPIO_PORT的外设时钟*/
-    DHT11_Dout_SCK_APBxClock_FUN ( DHT11_Dout_GPIO_CLK, ENABLE );	
- 
-	/*选择要控制的DHT11_Dout_GPIO_PORT引脚*/															   
-  	GPIO_InitStructure.GPIO_Pin = DHT11_Dout_GPIO_PIN;	
-
-	/*设置引脚模式为通用推挽输出*/
-  	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
-
-	/*设置引脚速率为50MHz */   
-  	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
-
-	/*调用库函数，初始化DHT11_Dout_GPIO_PORT*/
-  	GPIO_Init ( DHT11_Dout_GPIO_PORT, &GPIO_InitStructure );		  
-	
-}
-
-
-/*
- * 函数名：DHT11_Mode_IPU
- * 描述  ：使DHT11-DATA引脚变为上拉输入模式
- * 输入  ：无
- * 输出  ：无
- */
-static void DHT11_Mode_IPU(void)
-{
- 	  GPIO_InitTypeDef GPIO_InitStructure;
-
-	  	/*选择要控制的DHT11_Dout_GPIO_PORT引脚*/	
-	  GPIO_InitStructure.GPIO_Pin = DHT11_Dout_GPIO_PIN;
-
-	   /*设置引脚模式为浮空输入模式*/ 
-	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU ; 
-
-	  /*调用库函数，初始化DHT11_Dout_GPIO_PORT*/
-	  GPIO_Init(DHT11_Dout_GPIO_PORT, &GPIO_InitStructure);	 
-	
-}
-
-
-/*
- * 函数名：DHT11_Mode_Out_PP
- * 描述  ：使DHT11-DATA引脚变为推挽输出模式
- * 输入  ：无
- * 输出  ：无
- */
-static void DHT11_Mode_Out_PP(void)
-{
- 	GPIO_InitTypeDef GPIO_InitStructure;
-
-	 	/*选择要控制的DHT11_Dout_GPIO_PORT引脚*/															   
-  	GPIO_InitStructure.GPIO_Pin = DHT11_Dout_GPIO_PIN;	
-
-	/*设置引脚模式为通用推挽输出*/
-  	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
-
-	/*设置引脚速率为50MHz */   
-  	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-
-	/*调用库函数，初始化DHT11_Dout_GPIO_PORT*/
-  	GPIO_Init(DHT11_Dout_GPIO_PORT, &GPIO_InitStructure);	 	 
-	
-}
-
+#include "./dht11/bsp_dht11_1.h"
 
 /* 
  * 从DHT11读取一个字节，MSB先行
@@ -124,16 +38,6 @@ static uint8_t DHT11_ReadByte (DHT11_Data_TypeDef * DHT11_Data )
 	
 }
 
-void DHT11_1_Dout_0(void)
-{
-    GPIO_ResetBits ( DHT11_Dout_GPIO_PORT, DHT11_Dout_GPIO_PIN );
-}
-
-void DHT11_1_Dout_1(void)
-{
-    GPIO_SetBits ( DHT11_Dout_GPIO_PORT, DHT11_Dout_GPIO_PIN );
-}
-
 /*
  * 一次完整的数据传输为40bit，高位先出
  * 8bit 湿度整数 + 8bit 湿度小数 + 8bit 温度整数 + 8bit 温度小数 + 8bit 校验和 
@@ -141,7 +45,6 @@ void DHT11_1_Dout_1(void)
 uint8_t DHT11_Read_TempAndHumidity(DHT11_Data_TypeDef *DHT11_Data)
 {  
 	/*输出模式*/
-	//DHT11_Mode_Out_PP();
     DHT11_Data->_DHT11_Mode_Out_PP_();
 	/*主机拉低*/
 	//DHT11_Dout_0;
@@ -156,7 +59,6 @@ uint8_t DHT11_Read_TempAndHumidity(DHT11_Data_TypeDef *DHT11_Data)
 	Delay_us(30);   //延时30us
 
 	/*主机设为输入 判断从机响应信号*/ 
-	//DHT11_Mode_IPU();
     DHT11_Data->_DHT11_Mode_IPU_();
 
 	/*判断从机是否有低电平响应信号 如不响应则跳出，响应则向下运行*/   
@@ -181,7 +83,6 @@ uint8_t DHT11_Read_TempAndHumidity(DHT11_Data_TypeDef *DHT11_Data)
 
 
 		/*读取结束，引脚改为输出模式*/
-		//DHT11_Mode_Out_PP();
         DHT11_Data->_DHT11_Mode_Out_PP_();
 		/*主机拉高*/
 		//DHT11_Dout_1;
@@ -206,10 +107,10 @@ uint8_t DHT11_Read_TempAndHumidity(DHT11_Data_TypeDef *DHT11_Data)
   */
 void DHT11_Init (DHT11_Data_TypeDef * DHT11_Data)
 {
-    DHT11_Data->_DHT11_GPIO_Config_ = DHT11_GPIO_Config;
-	DHT11_Data->_DHT11_GPIO_SetBits_ = DHT11_GPIO_SetBits;	
-    DHT11_Data->_DHT11_Mode_Out_PP_ = DHT11_Mode_Out_PP;
-    DHT11_Data->_DHT11_Mode_IPU_ = DHT11_Mode_IPU;
+    DHT11_Data->_DHT11_GPIO_Config_ = DHT11_1_GPIO_Config;
+	DHT11_Data->_DHT11_GPIO_SetBits_ = DHT11_1_GPIO_SetBits;	
+    DHT11_Data->_DHT11_Mode_Out_PP_ = DHT11_1_Mode_Out_PP;
+    DHT11_Data->_DHT11_Mode_IPU_ = DHT11_1_Mode_IPU;
     DHT11_Data->_DHT11_Dout_0_ = DHT11_1_Dout_0;
     DHT11_Data->_DHT11_Dout_1_ = DHT11_1_Dout_1;
     DHT11_Data->_DHT11_Dout_IN_ = DHT11_1_Dout_IN;

@@ -21,15 +21,6 @@ typedef struct
     
 } DHT11_Data_TypeDef;
 
-
-
-/************************** DHT11 连接引脚定义********************************/
-#define      DHT11_Dout_SCK_APBxClock_FUN              RCC_APB2PeriphClockCmd
-#define      DHT11_Dout_GPIO_CLK                       RCC_APB2Periph_GPIOB
-
-#define      DHT11_Dout_GPIO_PORT                      GPIOB
-#define      DHT11_Dout_GPIO_PIN                       GPIO_Pin_12
-
 /************************** DHT11 函数声明 ********************************/
 void                     DHT11_Init                      ( DHT11_Data_TypeDef * DHT11_Data );
 uint8_t                  DHT11_Read_TempAndHumidity      ( DHT11_Data_TypeDef * DHT11_Data );

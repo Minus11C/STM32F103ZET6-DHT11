@@ -29,6 +29,6 @@
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\main.o: ..\..\User\./systick/bsp_SysTick.h
-..\..\output\main.o: ..\..\User\./dht11/bsp_dht11.h
+..\..\output\main.o: ..\..\User\./dht11/dht11.h
 ..\..\output\main.o: ..\..\User\./usart/bsp_usart.h
 ..\..\output\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
